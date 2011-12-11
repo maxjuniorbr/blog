@@ -1,0 +1,9 @@
+!!!
+%html
+  %head
+    %title Blog
+    = stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Signika:300|Oswald'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+%body
+  = yield
