@@ -14,5 +14,9 @@
 # Ignore *.lock
 /*.lock
 
-# Ignore database.yml
+# Ignore database
 /config/database.yml
+
+# Ignore sublime project
+/*.sublime-project
+/*.sublime-workspace
