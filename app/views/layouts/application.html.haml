@@ -1,9 +1,29 @@
 !!!
-%html
+%html{:lang => "en", "xml:lang" => "en", :xmlns => "http://www.w3.org/1999/xhtml"}
   %head
     %title Blog
-    = stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Signika:300|Oswald'
+    = stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family= Signika:300|Oswald'
     = javascript_include_tag 'application'
     = csrf_meta_tags
+
 %body
-  = yield
+  #header
+    %h1
+      = link_to 'Blog', root_path
+    #user_bar
+      -if logged_in?
+        = link_to 'New Article', new_article_path
+        |
+        = link_to 'Edit Password', edit_user_path(current_user)
+        |
+        = link_to 'Logout', logout_path
+      -else
+        = link_to  'Login', login_path
+  #main
+    = content_tag :p, notice, class: 'notice' if notice.present?
+    = content_tag :p, alert, class: 'alert' if alert.present?
+    = yield
+  #footer
+    A simple blog built for the book
+    %a{:href => 'http://beginningrails.com'}
+      Beginning Rails 3
