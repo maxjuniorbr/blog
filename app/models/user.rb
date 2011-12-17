@@ -4,10 +4,10 @@ class User < ActiveRecord::Base
   attr_accessor :password
 
   validates :email, :uniqueness => true, 
-    :lenght => { :within => 5..50 },
+    :length => { :within => 5..50 },
     :format => { :with => /^[^@][\w.-]+@[\w.-]+[.][a-z]{2,4}$/i }
   validates :password, :confirmation => true,
-    :lenght => { :within => 4..20 },
+    :length => { :within => 4..20 },
     :presence => true,
     :if => :password_required?
 
@@ -20,6 +20,10 @@ class User < ActiveRecord::Base
   def self.authenticate(email, password)
     user = find_by_email(email)
     return user if user && user.authenticated?(password)
+  end
+
+  def authenticated?(password)
+    self.hashed_password == encrypt(password)
   end
 
   protected
