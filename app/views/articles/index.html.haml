@@ -1,22 +1,4 @@
 %h1 Listing articles
-%table
-  %tr
-    %th Title
-    %th Location
-    %th Excerpt
-    %th Body
-    %th Published at
-    %th
-    %th
-    %th
-- @articles.each do |article|
-  %tr
-    %td= article.title
-    %td= article.location
-    %td= article.excerpt
-    %td= article.body
-    %td= article.published_at
-    %td= link_to 'Show', article
-    %td= link_to 'Edit', edit_article_path(article)
-    %td= link_to 'Destroy', article, confirm: 'Are you sure?', method: :delete
-= link_to 'New Article', new_article_path
+
+#articles
+  = render @articles
