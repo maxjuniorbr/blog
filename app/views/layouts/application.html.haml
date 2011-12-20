@@ -1,5 +1,5 @@
 !!!
-%html{:lang => "en", "xml:lang" => "en", :xmlns => "http://www.w3.org/1999/xhtml"}
+%html{lang: 'en', 'xml:lang' => 'en', xmlns: 'http://www.w3.org/1999/xhtml'}
   %head
     %title Blog
     = stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family= Signika:300|Oswald'
@@ -9,21 +9,21 @@
 %body
   #header
     %h1
-      = link_to 'Blog', root_path
+      = link_to t('general.title'), root_path
+      = language_selector
     #user_bar
       -if logged_in?
-        = link_to 'New Article', new_article_path
+        = link_to t('articles.new_article'), new_article_path
         |
-        = link_to 'Edit Password', edit_user_path(current_user)
+        = link_to t('users.edit_password'), edit_user_path(current_user)
         |
-        = link_to 'Logout', logout_path
+        = link_to t('sessions.logout'), logout_path
       -else
-        = link_to  'Login', login_path
+        = link_to  t('sessions.login'), login_path
   #main
     = content_tag :p, notice, class: 'notice' if notice.present?
     = content_tag :p, alert, class: 'alert' if alert.present?
     = yield
   #footer
-    A simple blog built for the book
-    %a{:href => 'http://beginningrails.com'}
-      Beginning Rails 3
+    = t('general.footer')
+    %a{:href => "http://beginningrails.com"} Beginning Rails 3

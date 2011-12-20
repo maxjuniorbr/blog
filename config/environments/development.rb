@@ -27,4 +27,17 @@ Blog::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # E-mail configuration
+  config.action_mailer.raise_delivery_errors = true
+
+  # Gmail SMTP server setup
+  ActionMailer::Base.smtp_settings = {
+    :address => 'smtp.gmail.com',
+    :enable_starttls_auto => true,
+    :port => 587,
+    :authentication => :plain,
+    :user_name => 'br3blog@gmail.com',
+    :password => 'blogbr31'
+  }
 end

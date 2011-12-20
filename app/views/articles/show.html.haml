@@ -1,5 +1,7 @@
 = render @article
-%h3 Comments
+= link_to t('general.email_a_friend'), '#', onClick: :'$("#notify_friend_form").slideDown();'
+= render 'notify_friend'
+%h3= t('comments.comments')
 #comments
   = render @article.comments
-= link_to "new comment", new_article_comment_path(@article, format: :js), remote: true, id: 'new_comment_link'
+= link_to t('comments.new_comment'), new_article_comment_path(@article, format: :js), remote: true, id: 'new_comment_link'
