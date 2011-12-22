@@ -5,7 +5,7 @@ class Notifier < ActionMailer::Base
     @article = article
     @sender_name = sender_name
 
-    attachments["rails.png"] = File.read(Rails.root.join("public/images/rails.png"))
+    attachments["rails.png"] = File.read(Rails.root.join("app/assets/images/rails.png"))
     mail :to => receiver_email, :subject => "Interesting Article"
   end
   
