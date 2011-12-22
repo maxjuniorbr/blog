@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_filter :authenticate, except: [:index, :show, :notify_friend]
+  before_filter :authenticate, except: [:index, :show, :notify_friend, :search]
 
   def index
     @articles = Article.all
@@ -74,5 +74,10 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     Notifier.email_friend(@article, params[:name], params[:email]).deliver
     redirect_to @article, :notice => t('articles.notify_friend_success')
+  end
+
+  def search
+    @articles = Article.search(params[:keyword])
+    render :action => 'index'
   end
 end
