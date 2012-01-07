@@ -57,4 +57,17 @@ Blog::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+  # E-mail configuration
+  config.action_mailer.raise_delivery_errors = true
+
+  # Gmail SMTP server setup
+  ActionMailer::Base.smtp_settings = {
+    :address => 'smtp.gmail.com',
+    :enable_starttls_auto => true,
+    :port => 587,
+    :authentication => :plain,
+    :user_name => 'br3blog@gmail.com',
+    :password => 'blogbr31'
+  }
 end
